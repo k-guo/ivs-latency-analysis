@@ -1,0 +1,17 @@
+# Ignore generated data files
+*.txt
+*.csv
+*.png
+
+# Ignore generated python scripts
+*.py
+
+# Ignore Python virtual environments
+.nsx_venv/
+
+# Ignore log/output files
+monitor_ivs*.err
+monitor_ivs*.out
+
+# macOS specific
+.DS_Store
