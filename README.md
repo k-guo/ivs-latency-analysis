@@ -1,10 +1,10 @@
-# NSX IVS Latency Analysis
+# NSX IvS Latency Analysis
 
-This repository contains shell scripts used to collect and analyze NSX Industrial vSwitch (IVS) latency statistics for virtual PLC (vPLC) vNIC interfaces.
+This repository contains shell scripts used to collect and analyze NSX Industrial vSwitch (IvS) latency statistics for virtual PLC (vPLC) vNIC interfaces.
 
 ## Scripts Overview
 
-1. **`ivs_collect_latency_stats_v3.sh`**: A script to run on the ESXi host to collect the IVS latency stats periodically.
+1. **`ivs_collect_latency_stats_v3.sh`**: A script to run on the ESXi host to collect the IvS latency stats periodically.
 2. **`ivs_analyze_lantecy_create_graph.sh`**: A script to run on a jump host or local machine (e.g., macOS/Linux) to parse the collected text files and generate a CSV and graphs.
 
 ---
