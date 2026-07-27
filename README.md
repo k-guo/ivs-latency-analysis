@@ -11,7 +11,7 @@ This repository contains shell scripts used to collect and analyze NSX Industria
 
 ## 1. Data Collection
 
-The `ivs_collect_latency_stats_v3.sh` script is designed to run on the ESXi host where the vPLC is running. It collects latency statistics every 60 seconds and saves them to text files. The script automatically clears the stats every 3 minutes and stops after 3 days.
+The `ivs_collect_latency_stats_v3.sh` script is designed to run on the ESXi host where the vPLC is running. It collects latency statistics every 60 seconds (using a drift-corrected timer) and saves them to text files. The script automatically clears the stats every 3 minutes and stops after 3 days. It also includes compatibility checks for different ESXi builds (e.g., handling FastSlab metrics on GA vs Debug builds) and logs clearance events to a dedicated file.
 
 ### Usage
 
@@ -26,7 +26,7 @@ The `ivs_collect_latency_stats_v3.sh` script is designed to run on the ESXi host
    ```
    *(You can also run it in the background using `nohup` or `screen` if available).*
 
-4. The script will generate files named `nsx_combined_YYYYMMDD_HHMMSS.txt` in the `/tmp/nsx_stats` directory.
+4. The script will generate files named `nsx_combined_YYYYMMDD_HHMMSS.txt` in the `/tmp/nsx_stats` directory. It will also generate a `clearance_events.log` file in the same directory to track when the stats are reset.
 
 ---
 
@@ -113,6 +113,14 @@ mbufAllocFailure             0                0                0                
 mbufAllocs                   45738            21870            62658            23898            
 ...
 maxPollIVTimeInUS            587              587              587              587              
+
+========================================
+
+COMMAND 3: EnsSlab deallocTimeHisto
+----------------------------------------
+Slab: EnsSlab_1
+...
+(Or a fallback message if the host build does not support this metric)
 
 ========================================
 End of Capture
